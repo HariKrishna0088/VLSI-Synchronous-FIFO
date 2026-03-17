@@ -5,48 +5,48 @@
   <img src="https://img.shields.io/badge/Parameterized-Yes-blueviolet?style=for-the-badge" alt="Parameterized"/>
 </p>
 
-# 🗄️ Synchronous FIFO — Verilog HDL
+# ðŸ—„ï¸ Synchronous FIFO â€” Verilog HDL
 
 > A parameterized, synthesizable synchronous FIFO (First In, First Out) buffer with configurable depth/width, status flags, and error detection.
 
 ---
 
-## 🔍 Overview
+## ðŸ” Overview
 
-FIFO buffers are **essential IP cores** used in every SoC design — from UART receive buffers to AXI interconnect data paths. This project implements a fully parameterized synchronous FIFO with comprehensive status and error reporting.
+FIFO buffers are **essential IP cores** used in every SoC design â€” from UART receive buffers to AXI interconnect data paths. This project implements a fully parameterized synchronous FIFO with comprehensive status and error reporting.
 
 ### Key Highlights
-- 🔧 **Fully Parameterized** — Configurable DATA_WIDTH and FIFO_DEPTH
-- 🚩 **6 Status Signals** — Full, Empty, Almost Full, Almost Empty, Overflow, Underflow
-- 📊 **Data Count** — Real-time entry count output
-- 🔄 **Simultaneous R/W** — Handles concurrent read and write operations
-- ✅ **Self-Checking TB** — 20+ automated test cases
-- 🔬 **Synthesizable** — Ready for FPGA implementation
+- ðŸ”§ **Fully Parameterized** â€” Configurable DATA_WIDTH and FIFO_DEPTH
+- ðŸš© **6 Status Signals** â€” Full, Empty, Almost Full, Almost Empty, Overflow, Underflow
+- ðŸ“Š **Data Count** â€” Real-time entry count output
+- ðŸ”„ **Simultaneous R/W** â€” Handles concurrent read and write operations
+- âœ… **Self-Checking TB** â€” 20+ automated test cases
+- ðŸ”¬ **Synthesizable** â€” Ready for FPGA implementation
 
 ---
 
-## 🏗️ Architecture
+## ðŸ—ï¸ Architecture
 
 ```
-              ┌──────────────────────────────────┐
-  wr_en ──────┤►  ┌─────────────────────────┐    ├────── rd_data
-  wr_data ────┤►  │   Memory Array          │    │
-              │   │   [DEPTH x WIDTH]       │    ├────── full
-              │   │                         │    ├────── empty
-              │   │  wr_ptr ──►  [  ][  ]   │    ├────── almost_full
-              │   │              [  ][  ]   │    ├────── almost_empty
-              │   │              [  ][  ]   │    ├────── data_count
-              │   │  rd_ptr ──►  [  ][  ]   │    ├────── overflow
-              │   │                         │    ├────── underflow
-  rd_en ──────┤►  └─────────────────────────┘    │
-  clk ────────┤►                                 │
-  rst_n ──────┤►                                 │
-              └──────────────────────────────────┘
+              â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+  wr_en â”€â”€â”€â”€â”€â”€â”¤â–º  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”œâ”€â”€â”€â”€â”€â”€ rd_data
+  wr_data â”€â”€â”€â”€â”¤â–º  â”‚   Memory Array          â”‚    â”‚
+              â”‚   â”‚   [DEPTH x WIDTH]       â”‚    â”œâ”€â”€â”€â”€â”€â”€ full
+              â”‚   â”‚                         â”‚    â”œâ”€â”€â”€â”€â”€â”€ empty
+              â”‚   â”‚  wr_ptr â”€â”€â–º  [  ][  ]   â”‚    â”œâ”€â”€â”€â”€â”€â”€ almost_full
+              â”‚   â”‚              [  ][  ]   â”‚    â”œâ”€â”€â”€â”€â”€â”€ almost_empty
+              â”‚   â”‚              [  ][  ]   â”‚    â”œâ”€â”€â”€â”€â”€â”€ data_count
+              â”‚   â”‚  rd_ptr â”€â”€â–º  [  ][  ]   â”‚    â”œâ”€â”€â”€â”€â”€â”€ overflow
+              â”‚   â”‚                         â”‚    â”œâ”€â”€â”€â”€â”€â”€ underflow
+  rd_en â”€â”€â”€â”€â”€â”€â”¤â–º  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â”‚
+  clk â”€â”€â”€â”€â”€â”€â”€â”€â”¤â–º                                 â”‚
+  rst_n â”€â”€â”€â”€â”€â”€â”¤â–º                                 â”‚
+              â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ---
 
-## ⚙️ Parameters
+## âš™ï¸ Parameters
 
 | Parameter | Default | Description |
 |:---------:|:-------:|:------------|
@@ -55,23 +55,23 @@ FIFO buffers are **essential IP cores** used in every SoC design — from UART r
 
 ---
 
-## 📁 File Structure
+## ðŸ“ File Structure
 
 ```
 VLSI-Synchronous-FIFO/
-├── src/
-│   └── sync_fifo.v         # Parameterized FIFO module
-├── testbench/
-│   └── fifo_tb.v           # Self-checking testbench
-├── docs/
-├── .gitignore
-├── LICENSE
-└── README.md
+â”œâ”€â”€ src/
+â”‚   â””â”€â”€ sync_fifo.v         # Parameterized FIFO module
+â”œâ”€â”€ testbench/
+â”‚   â””â”€â”€ fifo_tb.v           # Self-checking testbench
+â”œâ”€â”€ docs/
+â”œâ”€â”€ .gitignore
+â”œâ”€â”€ LICENSE
+â””â”€â”€ README.md
 ```
 
 ---
 
-## 🚀 Simulation Guide
+## ðŸš€ Simulation Guide
 
 ```bash
 # Compile
@@ -86,22 +86,22 @@ gtkwave fifo_tb.vcd
 
 ---
 
-## 💡 Applications
+## ðŸ’¡ Applications
 
-- 📡 **UART/SPI Buffers** — Data buffering between clock domains
-- 🔌 **AXI Interconnect** — Transaction buffering in bus protocols
-- 🏭 **DMA Controllers** — Data staging for bulk transfers
-- 🖥️ **Processor Pipelines** — Instruction/data queues
+- ðŸ“¡ **UART/SPI Buffers** â€” Data buffering between clock domains
+- ðŸ”Œ **AXI Interconnect** â€” Transaction buffering in bus protocols
+- ðŸ­ **DMA Controllers** â€” Data staging for bulk transfers
+- ðŸ–¥ï¸ **Processor Pipelines** â€” Instruction/data queues
 
 ---
 
-## 👨‍💻 Author
+## ðŸ‘¨â€ðŸ’» Author
 
-**Daggolu Hari Krishna** — B.Tech ECE | JNTUA College of Engineering, Kalikiri
+**Daggolu Hari Krishna** â€” B.Tech ECE | JNTUA College of Engineering, Kalikiri
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/harikrishnadaggolu)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/contacthari88/)
 [![GitHub](https://img.shields.io/badge/GitHub-Harikrishna__08-black?style=flat-square&logo=github)](https://github.com/Harikrishna_08)
 
 ---
 
-<p align="center">⭐ Star this repo if you found it useful! ⭐</p>
+<p align="center">â­ Star this repo if you found it useful! â­</p>
